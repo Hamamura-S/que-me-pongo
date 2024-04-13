@@ -4,18 +4,18 @@ import java.util.List;
 
 public class Atuendo {
 
-    private List<Prenda> prendas;
+  private List<Prenda> prendas;
 
-    //GETTERS
+  //GETTERS
 
-    public List<Prenda> getPrendas() {
-        return prendas;
-    }
+  public List<Prenda> getPrendas() {
+    return prendas;
+  }
 
-    /*---------------------------*/
+  /*---------------------------*/
 
-    public void agregarPrenda(Prenda unaPrenda){
-        prendas.add(unaPrenda);
-    }
+  public void agregarPrenda(Prenda unaPrenda){
+    prendas.add(unaPrenda);
+  }
 
 }

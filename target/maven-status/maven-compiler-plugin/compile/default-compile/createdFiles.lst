@@ -1,0 +1,14 @@
+com/solution/enums/TipoAccesorio.class
+com/solution/Servidor.class
+com/solution/enums/TipoCalzado.class
+com/solution/Prenda.class
+com/solution/categorias/Calzado.class
+com/solution/enums/Material.class
+com/solution/Atuendo.class
+com/solution/categorias/Accesorio.class
+com/solution/Usuario.class
+com/solution/enums/TipoParteInferior.class
+com/solution/categorias/ParteSuperior.class
+com/solution/enums/Color.class
+com/solution/enums/TipoParteSuperior.class
+com/solution/categorias/ParteInferior.class

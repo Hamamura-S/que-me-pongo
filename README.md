@@ -1,6 +1,11 @@
 # Qué Me Pongo
 
 Se utilizó la plantilla oficial de proyectos para Java y Maven.
+  
+Correcciones para la I.2  
+- Implementar colores como una clase con atributos RGB, no como enum. Se quiere visualizar colores.  
+- Agregar validaciones en constructores porque Constructores admiten NULL.  
+- Implementar Categoria como ENUM
 
 ---
 
