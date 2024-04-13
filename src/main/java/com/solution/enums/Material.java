@@ -7,5 +7,6 @@ public enum Material {
     JEAN,
     CUERO,
     PLASTICO,
-    GOMA
+    GOMA;
+
 }

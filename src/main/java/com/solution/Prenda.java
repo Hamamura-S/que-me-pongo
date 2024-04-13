@@ -4,31 +4,36 @@ import static java.util.Objects.requireNonNull;
 
 import com.solution.enums.Categoria;
 import com.solution.enums.Material;
+import com.solution.enums.Trama;
 
 public class Prenda {
 
-  protected Material material;
+  protected TipoPrenda tipo;
 
-  protected Color colorPrimario;
+  // Estilo
+  protected Material material; //debera inicializarse manualmente
+
+  protected Color colorPrimario; //debera inicializarse manualmente
+
+  protected Trama trama = Trama.LISA;
 
   protected Color colorSecundario;
 
-  protected TipoPrenda tipo;
-
-  public Prenda(Material material, Color colorPrimario, TipoPrenda tipo) {
-    this.material = requireNonNull(material, "Se debe proveer un material de ropa.");
-    this.colorPrimario = requireNonNull(colorPrimario, "Se debe proveer un color primario.");
+  public Prenda(TipoPrenda tipo) {
     this.tipo = requireNonNull(tipo, "Se debe proveer un tipo de ropa.");
   }
 
-  // SETTERS
-  public void setColorSecundario(Color colorSecundario) {
-    this.colorSecundario = colorSecundario;
+  public void setMaterialSeguro(Material unMaterial) {
+    if (!(tipo.puedeEstarHechoDe(unMaterial))) {
+      throw new RuntimeException("Este tipo de prenda no admite el material " + unMaterial.name());
+    }
+    setMaterial(unMaterial);
   }
 
   //GETTERS
-  public Color getColorSecundario() {
-    return colorSecundario;
+
+  public String getNombre() {
+    return tipo.nombre;
   }
 
   public TipoPrenda getTipo() {
@@ -37,6 +42,39 @@ public class Prenda {
 
   public Categoria getCategoria() {
     return tipo.categoria;
+  }
+
+  public Material getMaterial() {
+    return material;
+  }
+
+  public Color getColorPrimario() {
+    return colorPrimario;
+  }
+
+  public Color getColorSecundario() {
+    return colorSecundario;
+  }
+
+  public Trama getTrama() {
+    return trama;
+  }
+
+  //SETTERS
+  private void setMaterial(Material unMaterial) {
+    this.material = unMaterial;
+  }
+
+  public void setColorPrimario(Color colorPrimario) {
+    this.colorPrimario = colorPrimario;
+  }
+
+  public void setColorSecundario(Color colorSecundario) {
+    this.colorSecundario = colorSecundario;
+  }
+
+  public void setTrama(Trama unaTrama) {
+    this.trama = unaTrama;
   }
 
 }

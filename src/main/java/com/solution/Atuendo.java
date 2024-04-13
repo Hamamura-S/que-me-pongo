@@ -14,8 +14,9 @@ public class Atuendo {
 
   /*---------------------------*/
 
-  public void agregarPrenda(Prenda unaPrenda){
+  public void agregarPrenda(Prenda unaPrenda) {
     prendas.add(unaPrenda);
   }
 
 }
+
