@@ -1,5 +1,7 @@
 package com.solution;
 
+import com.solution.enums.Categoria;
+import com.solution.enums.Material;
 import java.util.List;
 
 public class Usuario {
@@ -17,7 +19,9 @@ public class Usuario {
 
   /*-------------------------*/
 
-  public void cargarPrenda(Prenda unaPrenda) {
+  public void cargarPrenda(Material material, Color colorPrimario, String nombre, Categoria categoria) {
+    TipoPrenda tipo = new TipoPrenda(nombre, categoria);
+    Prenda unaPrenda = new Prenda(material, colorPrimario, tipo);
     guardarropas.add(unaPrenda);
   }
 

@@ -2,7 +2,8 @@ package com.solution;
 
 import static java.util.Objects.requireNonNull;
 
-import com.solution.enums.*;
+import com.solution.enums.Categoria;
+import com.solution.enums.Material;
 
 public class Prenda {
 
