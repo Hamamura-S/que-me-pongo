@@ -8,18 +8,22 @@ Correcciones para la I.2
 - Implementar Categoria como ENUM  
   
 Correcciones para la I.3
-- El borrador de la ultima prenda no necesita ser tan estricto, puede haber muchas ultimas prendas.
+- El borradorPrenda de la ultima prenda no necesita ser tan estricto, puede haber muchas ultimas prendas.  
 - Usar un builder para la prenda y hacer las verificaciones ahi. 
+- No hay clase administrador. Estos serian usuarios con acceso a los metodos del servidor.  
 ---
 
 La clase Servidor sería la encargada de procesar las solicitudes de los distintos clientes.  
     -Tendrá una lista de clientes verificados para hacer chequeos.  
     -A futuro podrian agregarse factores climaticos contemplados.   
-    -Por lo pronto, no necesita almacenar los atuendos que genera.  
+    -Almacena los uniformes que se generan, haciendo de rol de **administrador**. Estos serian usuarios con acceso al servidor.  
 
 Cada Usuario conoce sus prendas y los atuendos que se le generan.  
     -Por lo pronto, no implementa sensibilidades climaticas ni gustos sobre prendas  
-    -Podrian agregarse datos personales que el servidor pueda usar para validar al usuario.  
-    -El administrador hereda del usuario para crear uniformes. El uniforme hereda del atuendo.
+    -Podrian agregarse datos personales que el servidor pueda usar para validar al usuario.
 
-La prenda es compuesta por TipoPrenda
+Los uniformes heredan de el Atuendo. "Son un tipo de atuendo".  
+
+Por lo pronto, el atuendo solo tiene un atributo por clase de prenda, pues **no hay superposicion**.
+
+![image](./class-diagrams/diagram-V2.1.png)
