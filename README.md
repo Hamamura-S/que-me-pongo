@@ -5,8 +5,11 @@ Se utilizó la plantilla oficial de proyectos para Java y Maven.
 Correcciones para la I.2  
 - Implementar colores como una clase con atributos RGB, no como enum. Se quiere visualizar colores.  
 - Agregar validaciones en constructores porque Constructores admiten NULL.  
-- Implementar Categoria como ENUM
-
+- Implementar Categoria como ENUM  
+  
+Correcciones para la I.3
+- El borrador de la ultima prenda no necesita ser tan estricto, puede haber muchas ultimas prendas.
+- Usar un builder para la prenda y hacer las verificaciones ahi. 
 ---
 
 La clase Servidor sería la encargada de procesar las solicitudes de los distintos clientes.  
