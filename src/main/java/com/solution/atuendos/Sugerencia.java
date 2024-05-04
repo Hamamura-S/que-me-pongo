@@ -1,4 +1,6 @@
-package com.solution;
+package com.solution.atuendos;
+
+import com.solution.prendas.Prenda;
 
 /**
  * Atuendo que se genera en base al guardarropas del usuario.

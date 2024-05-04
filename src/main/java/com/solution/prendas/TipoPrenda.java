@@ -1,4 +1,4 @@
-package com.solution;
+package com.solution.prendas;
 
 import static java.util.Objects.requireNonNull;
 

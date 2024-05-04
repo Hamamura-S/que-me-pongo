@@ -1,4 +1,4 @@
-package com.solution;
+package com.solution.prendas;
 
 import com.solution.enums.Categoria;
 import com.solution.enums.Material;

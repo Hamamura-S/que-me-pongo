@@ -1,5 +1,7 @@
 package com.solution;
 
+import com.solution.atuendos.Uniforme;
+import com.solution.prendas.Prenda;
 import java.util.ArrayList;
 import java.util.List;
 

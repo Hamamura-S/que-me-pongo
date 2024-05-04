@@ -1,4 +1,6 @@
-package com.solution;
+package com.solution.atuendos;
+
+import com.solution.prendas.Prenda;
 
 public class Uniforme extends Atuendo {
 

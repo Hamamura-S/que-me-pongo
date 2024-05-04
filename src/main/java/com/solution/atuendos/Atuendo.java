@@ -1,7 +1,8 @@
-package com.solution;
+package com.solution.atuendos;
 
 import static java.util.Objects.requireNonNull;
 
+import com.solution.prendas.Prenda;
 import com.solution.enums.Categoria;
 
 public class Atuendo {

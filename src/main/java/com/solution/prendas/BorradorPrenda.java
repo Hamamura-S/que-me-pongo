@@ -1,7 +1,8 @@
-package com.solution;
+package com.solution.prendas;
 
 import com.solution.enums.Material;
 import com.solution.enums.Trama;
+
 import static java.util.Objects.requireNonNull;
 
 /**
