@@ -12,7 +12,8 @@ Correcciones para la I.3
 - Usar un builder para la prenda y hacer las verificaciones ahi. 
 - No hay clase administrador. Estos serian usuarios con acceso a los metodos del servidor.
 
-Nociones para la I.3 (clase 03/05)
+Nociones para la I.3 (clase 03/05)  
+![enunciado de la I3](https://docs.google.com/document/d/1XGb_Xt2v3viZY4RNky6zguL-ATv1iqEzHWhK4a6vsIk/edit)
 - Podria existir una clase sugerencia con los tipos de prenda que admite.
 - Que el usuario tenga la lista de prendas y ademas (de alguna manera) el metodo generarSugerencias porque el input del 
 metodo son las prendas guardadas. Devolveria el producto cartesiano entre los 3 conjuntos de prendas.
@@ -25,6 +26,7 @@ no conoce de usuarios. Solo recibe el primitivo int.
 - El mismo motor debe correr para TODOS LOS USUARIOS. Existe nocion de GLOBALIDAD. Deberia implementarse inyeccion de 
 dependencias, por ejemplo a traves de un service locator desde el MotorSugerencias al constructor del usuario.
 
+![enunciado de la I4](https://docs.google.com/document/d/1sy9S9EeIQr8fhatKnfTCgOfjVniJDu2viI-Av0gn0xY/edit)
 
 ---
 
