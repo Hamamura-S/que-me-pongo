@@ -18,10 +18,12 @@ public class Usuario {
   protected List<BorradorPrenda> borradoresPrendas;
   protected List<Atuendo> atuendos;
   protected List<Sugerencia> sugerencias = new ArrayList<>();
+  protected int edad;
 
   public MotorSugerencias motor;
 
-  public Usuario(MotorSugerencias motor) {
+  public Usuario(int edad, MotorSugerencias motor) {
+    this.edad = edad;
     this.motor = motor;
   }
 
@@ -68,7 +70,7 @@ public class Usuario {
    * Utiliza el motor cargado actualmente para generar sugerencias con el guardarropas.
    */
   public void recibirSugerencias() {
-    sugerencias.addAll(motor.generarSugerencias(guardarropas));
+    sugerencias.addAll(motor.generarSugerencias(guardarropas, this.edad));
   }
 
   //GETTERS
@@ -78,6 +80,10 @@ public class Usuario {
 
   public BorradorPrenda getBorrador(int index) {
     return borradoresPrendas.get(index);
+  }
+
+  public int getEdad() {
+    return edad;
   }
 
 }

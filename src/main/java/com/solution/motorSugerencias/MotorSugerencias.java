@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public abstract class MotorSugerencias {
 
-  public List<Sugerencia> generarSugerencias(List<Prenda> guardarropas) {
+  public List<Sugerencia> generarSugerencias(List<Prenda> guardarropas, int edad) {
     List<Prenda> partesSuperiores = guardarropas.stream().filter(prenda -> prenda.getTipo().categoria == Categoria.PARTE_SUPERIOR).collect(Collectors.toList());
     List<Prenda> partesInferiores = guardarropas.stream().filter(prenda -> prenda.getTipo().categoria == Categoria.PARTE_INFERIOR).collect(Collectors.toList());
     List<Prenda> calzados = guardarropas.stream().filter(prenda -> prenda.getTipo().categoria == Categoria.CALZADO).collect(Collectors.toList());
