@@ -2,6 +2,7 @@ package com.solution.prendas;
 
 import com.solution.enums.Material;
 import com.solution.enums.Trama;
+import java.text.Normalizer;
 
 import static java.util.Objects.requireNonNull;
 
@@ -17,6 +18,7 @@ public class BorradorPrenda {
   protected Color colorPrimario;  // obligatorio
   protected Trama trama = Trama.LISA;
   protected Color colorSecundario;
+  protected Formalidad formalidad;
 
   public BorradorPrenda(TipoPrenda tipo) {
     this.tipo = tipo;
@@ -33,7 +35,8 @@ public class BorradorPrenda {
         requireNonNull(material, "Se debe proveer un material antes de crear la prenda"),
         requireNonNull(colorPrimario, "Se debe proveer un color primario antes de crear la prenda."),
         trama,
-        colorSecundario
+        colorSecundario,
+        requireNonNull(formalidad, "Se debe proveer el tipo de formalidad de la prenda.")
     );
   }
 
@@ -61,4 +64,7 @@ public class BorradorPrenda {
     this.trama = unaTrama;
   }
 
+  public void setFormalidad(Formalidad formalidad) {
+    this.formalidad = formalidad;
+  }
 }
