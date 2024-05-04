@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import com.solution.atuendos.Atuendo;
 import com.solution.atuendos.Sugerencia;
 import com.solution.motorSugerencias.MotorSugerencias;
+import com.solution.motorSugerencias.MotorSugerenciasNormal;
 import com.solution.prendas.BorradorPrenda;
 import com.solution.prendas.Prenda;
 import com.solution.prendas.TipoPrenda;
@@ -14,12 +15,11 @@ import java.util.List;
 
 public class Usuario {
 
-  protected List<Prenda> guardarropas;
-  protected List<BorradorPrenda> borradoresPrendas;
-  protected List<Atuendo> atuendos;
+  protected List<Prenda> guardarropas = new ArrayList<>();
+  protected List<BorradorPrenda> borradoresPrendas = new ArrayList<>();
+  protected List<Atuendo> atuendos = new ArrayList<>();
   protected List<Sugerencia> sugerencias = new ArrayList<>();
   protected int edad;
-
   public MotorSugerencias motor;
 
   public Usuario(int edad, MotorSugerencias motor) {
