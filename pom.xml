@@ -26,7 +26,14 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>32.0.0-android</version> <!-- Asegúrate de usar la última versión -->
+    </dependency>
+
   </dependencies>
+
 
   <build>
     <plugins>
