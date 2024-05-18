@@ -19,6 +19,7 @@ public class BorradorPrenda {
   protected Trama trama = Trama.LISA;
   protected Color colorSecundario;
   protected Formalidad formalidad;
+  protected int temperaturaLimite;
 
   public BorradorPrenda(TipoPrenda tipo) {
     this.tipo = tipo;
@@ -36,7 +37,8 @@ public class BorradorPrenda {
         requireNonNull(colorPrimario, "Se debe proveer un color primario antes de crear la prenda."),
         trama,
         colorSecundario,
-        requireNonNull(formalidad, "Se debe proveer el tipo de formalidad de la prenda.")
+        requireNonNull(formalidad, "Se debe proveer el tipo de formalidad de la prenda."),
+        temperaturaLimite
     );
   }
 
@@ -67,4 +69,9 @@ public class BorradorPrenda {
   public void setFormalidad(Formalidad formalidad) {
     this.formalidad = formalidad;
   }
+
+  public void setTemperaturaLimite(int temperaturaLimite) {
+    this.temperaturaLimite = temperaturaLimite;
+  }
+
 }

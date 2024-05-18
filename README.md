@@ -31,8 +31,7 @@ dependencias, por ejemplo a traves de un service locator desde el MotorSugerenci
 ---
 
 La clase Servidor sería la encargada de procesar las solicitudes de los distintos clientes.  
-    -Tendrá una lista de clientes verificados para hacer chequeos.  
-    -A futuro podrian agregarse factores climaticos contemplados.   
+    -Tendrá una lista de clientes verificados para hacer chequeos.   
     -Almacena los uniformes que se generan, haciendo de rol de **administrador**. Estos serian usuarios con acceso al servidor.  
 
 Cada Usuario conoce sus prendas y los atuendos que se le generan.  
@@ -42,5 +41,7 @@ Cada Usuario conoce sus prendas y los atuendos que se le generan.
 Los uniformes heredan de el Atuendo. "Son un tipo de atuendo".  
 
 Por lo pronto, el atuendo solo tiene un atributo por clase de prenda, pues **no hay superposicion**.
+
+Si se quere testear el proveedor del clima, crear un Mock sobre la interfaz Servicio Meteorologico.
 
 ![image](./class-diagrams/diagram-V2.1.png)

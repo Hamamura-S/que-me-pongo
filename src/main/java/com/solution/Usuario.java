@@ -2,13 +2,14 @@ package com.solution;
 
 import static java.util.Objects.requireNonNull;
 
+import com.solution.Clima.ServicioMeteorologico;
 import com.solution.atuendos.Atuendo;
 import com.solution.atuendos.Sugerencia;
 import com.solution.motorSugerencias.MotorSugerencias;
-import com.solution.motorSugerencias.MotorSugerenciasNormal;
 import com.solution.prendas.BorradorPrenda;
 import com.solution.prendas.Prenda;
 import com.solution.prendas.TipoPrenda;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +22,12 @@ public class Usuario {
   protected List<Sugerencia> sugerencias = new ArrayList<>();
   protected int edad;
   public MotorSugerencias motor;
+  public ServicioMeteorologico pronostico;
 
-  public Usuario(int edad, MotorSugerencias motor) {
+  public Usuario(int edad, MotorSugerencias motor, ServicioMeteorologico pronostico) {
     this.edad = edad;
     this.motor = motor;
+    this.pronostico = pronostico;
   }
 
   /**
@@ -71,6 +74,21 @@ public class Usuario {
    */
   public void recibirSugerencias() {
     sugerencias.addAll(motor.generarSugerencias(guardarropas, this.edad));
+  }
+
+  public void recibirSugerenciasPorTemperatura() {
+    sugerencias.addAll(motor.generarSugerencias(filtrarPorTemperatura(guardarropas), this.edad));
+  }
+
+  protected List<Prenda> filtrarPorTemperatura(List<Prenda> guardarropas) {
+    return guardarropas
+        .stream()
+        .filter(prenda ->
+                pronostico
+                    .getTemperatura("Buenos Aires")
+                    .compareTo(new BigDecimal(prenda.getTemperaturaLimite())) == 0
+        )
+        .toList();
   }
 
   //GETTERS

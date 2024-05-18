@@ -15,14 +15,16 @@ public class Prenda {
   protected Trama trama;
   protected Color colorSecundario;
   protected Formalidad formalidad;
+  protected int temperaturaLimite;
 
-  public Prenda(TipoPrenda tipo, Material material, Color colorPrimario, Trama trama, Color colorSecundario, Formalidad formalidad) {
+  public Prenda(TipoPrenda tipo, Material material, Color colorPrimario, Trama trama, Color colorSecundario, Formalidad formalidad, int temperaturaLimite) {
     this.tipo = tipo;
     this.material = material;
     this.colorPrimario = colorPrimario;
     this.trama = trama;
     this.colorSecundario = colorSecundario;
     this.formalidad = formalidad;
+    this.temperaturaLimite = temperaturaLimite;
   }
 
   //GETTERS
@@ -57,6 +59,10 @@ public class Prenda {
 
   public Formalidad getFormalidad() {
     return formalidad;
+  }
+
+  public int getTemperaturaLimite() {
+    return temperaturaLimite;
   }
 
 }
