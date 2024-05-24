@@ -5,18 +5,20 @@ import static java.util.Objects.requireNonNull;
 import com.solution.Clima.ServicioMeteorologico;
 import com.solution.atuendos.Atuendo;
 import com.solution.atuendos.Sugerencia;
+import com.solution.guardarropas.Guardarropas;
 import com.solution.motorSugerencias.MotorSugerencias;
 import com.solution.prendas.BorradorPrenda;
 import com.solution.prendas.Prenda;
 import com.solution.prendas.TipoPrenda;
 import java.math.BigDecimal;
+import java.security.Guard;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Usuario {
 
-  protected List<Prenda> guardarropas = new ArrayList<>();
+  protected List<Guardarropas> listaGuardarropas = new ArrayList<>();
   protected List<BorradorPrenda> borradoresPrendas = new ArrayList<>();
   protected List<Atuendo> atuendos = new ArrayList<>();
   protected List<Sugerencia> sugerencias = new ArrayList<>();
@@ -46,23 +48,10 @@ public class Usuario {
    * Elimina el borrador y carga la nueva prenda en el guardarropas.
    * @param borradorPrenda sus datos deberan estar cargados.
    */
-  public void guardarPrenda(BorradorPrenda borradorPrenda) {
+  public void guardarPrenda(BorradorPrenda borradorPrenda, Guardarropas guardarropas) {
     Prenda newPrenda = borradorPrenda.build();
     borradoresPrendas.remove(borradorPrenda);
-    guardarropas.add(newPrenda);
-  }
-
-  /**
-   * Elimina una prenda del guardarropas.
-   * @param unaPrenda prenda a eliminar.
-   * @throws RuntimeException si la prenda no existia en el guardarropas.
-   */
-  public void removerPrenda(Prenda unaPrenda) {
-    if (guardarropas.remove(unaPrenda)) {
-      System.out.println("Se removió una prenda.");
-    } else {
-      throw new RuntimeException("La prenda no existía en el guardarropas.");
-    }
+    guardarropas.agregarPrenda(newPrenda);
   }
 
   public void recibirAtuendo(Atuendo unAtuendo) {
@@ -72,7 +61,7 @@ public class Usuario {
   /**
    * Utiliza el motor cargado actualmente para generar sugerencias con el guardarropas.
    */
-  public void recibirSugerencias() {
+  public void recibirSugerencias(Guardarropas guardarropas) {
     sugerencias.addAll(motor.generarSugerencias(guardarropas, this.edad));
   }
 

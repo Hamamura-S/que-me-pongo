@@ -1,6 +1,7 @@
 package com.solution.motorSugerencias;
 
 import com.google.common.collect.Lists;
+import com.solution.guardarropas.Guardarropas;
 import com.solution.prendas.Prenda;
 import com.solution.atuendos.Sugerencia;
 import com.solution.enums.Categoria;
@@ -10,7 +11,8 @@ import java.util.stream.Collectors;
 
 public abstract class MotorSugerencias {
 
-  public List<Sugerencia> generarSugerencias(List<Prenda> guardarropas, int edad) {
+  public List<Sugerencia> generarSugerencias(Guardarropas unGuardarropas, int edad) {
+    List<Prenda> guardarropas = unGuardarropas.getPrendas();
     List<Prenda> partesSuperiores = guardarropas.stream().filter(prenda -> prenda.getTipo().categoria == Categoria.PARTE_SUPERIOR).collect(Collectors.toList());
     List<Prenda> partesInferiores = guardarropas.stream().filter(prenda -> prenda.getTipo().categoria == Categoria.PARTE_INFERIOR).collect(Collectors.toList());
     List<Prenda> calzados = guardarropas.stream().filter(prenda -> prenda.getTipo().categoria == Categoria.CALZADO).collect(Collectors.toList());

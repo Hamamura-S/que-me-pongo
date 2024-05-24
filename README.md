@@ -39,9 +39,9 @@ Cada Usuario conoce sus prendas y los atuendos que se le generan.
     -Podrian agregarse datos personales que el servidor pueda usar para validar al usuario.
 
 Los uniformes heredan de el Atuendo. "Son un tipo de atuendo".  
-
+s
 Por lo pronto, el atuendo solo tiene un atributo por clase de prenda, pues **no hay superposicion**.
 
 Si se quere testear el proveedor del clima, crear un Mock sobre la interfaz Servicio Meteorologico.
 
-![image](./class-diagrams/diagram-V2.1.png)
+![image](./class-diagrams/Class-Diagram-V5.jpeg)
