@@ -9,14 +9,24 @@ public class Guardarropas {
   private List<Prenda> prendas;
   private List<PropuestaModificacion> sugerenciasPendientes;
   private List<PropuestaModificacion> sugerenciasAceptadas;
-  private Usuario owner;
+  private Usuario owner;  //AL PEDO. Validacion se hace por fuera.
 
   public Guardarropas(Usuario owner) {
     this.owner = owner;
   }
 
+  public void tieneSugerencia(PropuestaModificacion propuesta) {
+    if (! sugerenciasPendientes.contains(propuesta)) {
+      throw new RuntimeException("No existia la propuesta xd");
+    }
+  }
+
   public void recibirPropuesta(PropuestaModificacion propuesta) {
     sugerenciasPendientes.add(propuesta);
+  }
+
+  public void removerPropuesta(PropuestaModificacion propuesta) {
+    sugerenciasPendientes.remove(propuesta);
   }
 
   public void agregarPrenda(Prenda prenda) {
@@ -40,11 +50,11 @@ public class Guardarropas {
     return prendas;
   }
 
-  public List<PropuestaModificacion> verSugerenciasPendientes() {
+  public List<PropuestaModificacion> getSugerenciasPendientes() {
     return sugerenciasPendientes;
   }
 
-  public List<PropuestaModificacion> verSugerenciasAceptadas() {
+  public List<PropuestaModificacion> getSugerenciasAceptadas() {
     return sugerenciasAceptadas;
   }
 

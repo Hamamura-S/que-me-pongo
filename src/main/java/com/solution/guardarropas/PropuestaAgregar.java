@@ -11,7 +11,12 @@ public class PropuestaAgregar implements PropuestaModificacion {
     this.guardarropas = guardarropas;
   }
 
-  public void modificarGuardarropas() {
+  public void rechazarPropuesta() {
+    guardarropas.removerPropuesta(this);
+  }
+
+  public void aceptarPropuesta() {
+    guardarropas.tieneSugerencia(this);
     guardarropas.agregarPrenda(prenda);
   }
 

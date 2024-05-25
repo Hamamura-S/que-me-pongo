@@ -32,6 +32,10 @@ public class Usuario {
     this.pronostico = pronostico;
   }
 
+  public void agregarGuardarropas(Guardarropas guardarropas) {
+    listaGuardarropas.add(guardarropas);
+  }
+
   /**
    * La nueva instancia de borrador se retorna y ademas se guarda en el usuario.
    * Los cambios efectuados se reflejan en la instancia ya almacenada.
