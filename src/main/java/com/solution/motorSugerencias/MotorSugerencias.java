@@ -30,5 +30,10 @@ public abstract class MotorSugerencias {
     return sugerencias;
   }
 
+  public Sugerencia generarSugerenciaDiaria(Guardarropas unGuardarropas, int edad) {
+    List<Sugerencia> sugerencias = generarSugerencias(unGuardarropas, edad);
+    return sugerencias.get((int) (Math.random() * sugerencias.size()));
+  }
+
 }
 

@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import com.solution.Clima.ServicioMeteorologico;
 import com.solution.atuendos.Atuendo;
 import com.solution.atuendos.Sugerencia;
+import com.solution.enums.AlertaMeteorologica;
 import com.solution.guardarropas.Guardarropas;
 import com.solution.motorSugerencias.MotorSugerencias;
 import com.solution.prendas.BorradorPrenda;
@@ -22,14 +23,32 @@ public class Usuario {
   protected List<BorradorPrenda> borradoresPrendas = new ArrayList<>();
   protected List<Atuendo> atuendos = new ArrayList<>();
   protected List<Sugerencia> sugerencias = new ArrayList<>();
+  protected Sugerencia sugerenciaDiaria;
   protected int edad;
+  protected String locacion;
   public MotorSugerencias motor;
   public ServicioMeteorologico pronostico;
+  protected List<AccionConfigurable> accionConfigurables;
+
 
   public Usuario(int edad, MotorSugerencias motor, ServicioMeteorologico pronostico) {
     this.edad = edad;
     this.motor = motor;
     this.pronostico = pronostico;
+    pronostico.subscribe(this);
+  }
+
+  /* Consultar: sobre que guardarropas se generan las sugerencias diarias? */
+  public void getSugerenciaDiaria() {
+    Guardarropas temp = new Guardarropas();
+    temp.setPrendas(getPrendas()); //Se asume que se generan las sugerencias diarias sobre todas las prendas del usuario
+    sugerenciaDiaria = motor.generarSugerenciaDiaria(temp, this.edad);
+  }
+
+  public void recibirAlerta(List<AlertaMeteorologica> alertas) {
+    accionConfigurables.forEach(accionConfigurable ->
+        accionConfigurable.nuevasAlertasMeteorologicas(alertas, this)
+    );
   }
 
   public void agregarGuardarropas(Guardarropas guardarropas) {
@@ -69,24 +88,27 @@ public class Usuario {
     sugerencias.addAll(motor.generarSugerencias(guardarropas, this.edad));
   }
 
-  public void recibirSugerenciasPorTemperatura() {
-    sugerencias.addAll(motor.generarSugerencias(filtrarPorTemperatura(guardarropas), this.edad));
+  public void recibirSugerenciasPorTemperatura(Guardarropas guardarropas) {
+    Guardarropas temp = new Guardarropas();
+    temp.setPrendas(filtrarPorTemperatura(guardarropas));
+    sugerencias.addAll(motor.generarSugerencias(temp, this.edad));
   }
 
-  protected List<Prenda> filtrarPorTemperatura(List<Prenda> guardarropas) {
+  protected List<Prenda> filtrarPorTemperatura(Guardarropas guardarropas) {
     return guardarropas
+        .getPrendas()
         .stream()
         .filter(prenda ->
                 pronostico
-                    .getTemperatura("Buenos Aires")
+                    .getTemperatura(locacion)
                     .compareTo(new BigDecimal(prenda.getTemperaturaLimite())) == 0
         )
         .toList();
   }
 
   //GETTERS
-  public Prenda getPrenda(int index) {
-    return guardarropas.get(index);
+  public List<Guardarropas> getListaGuardarropas() {
+    return listaGuardarropas;
   }
 
   public BorradorPrenda getBorrador(int index) {
@@ -97,5 +119,16 @@ public class Usuario {
     return edad;
   }
 
+  public List<Prenda> getPrendas() {
+    List<Prenda> prendas = new ArrayList<>();
+    for (Guardarropas guardarropas : listaGuardarropas) {
+      prendas.addAll(guardarropas.getPrendas());
+    }
+    return prendas;
+  }
+
+  public String getLocacion() {
+    return locacion;
+  }
 }
 

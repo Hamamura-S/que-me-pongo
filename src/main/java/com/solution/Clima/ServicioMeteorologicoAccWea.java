@@ -1,26 +1,37 @@
 package com.solution.Clima;
 
+import com.solution.Usuario;
+import com.solution.enums.AlertaMeteorologica;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ServicioMeteorologicoAccWea implements ServicioMeteorologico {
 
-  static ServicioMeteorologicoAccWea single_instance = null;
+  private AccuWeatherAPI api = new AccuWeatherAPI();
 
-  static AccuWeatherAPI api = new AccuWeatherAPI();
+  private List<Usuario> subscribers = new ArrayList<>();
 
-  /**
-   * Devuelve la instancia unica del motor del clima
-   * @return ServicioMeteorologico.
-   *
-   */
-  public static synchronized ServicioMeteorologicoAccWea getInstance() {
-    if (single_instance == null) {
-      single_instance = new ServicioMeteorologicoAccWea();
+  private ListaAlertas alertas = new ListaAlertas();
+
+  public void actualizarAlertas() {
+    for (Usuario subscriber : subscribers) {
+      alertas.actualizarAlertas(
+          subscriber.getLocacion(),
+          getAlertasMeteorologicas(subscriber.getLocacion())
+      );
+      subscriber.recibirAlerta(alertas.getAlertasActuales(subscriber.getLocacion()));
     }
-    return single_instance;
+  }
+
+  public void subscribe(Usuario usuario) {
+    subscribers.add(usuario);
+  }
+
+  public void unsubscribe(Usuario usuario) {
+    subscribers.remove(usuario);
   }
 
   /**
@@ -58,6 +69,19 @@ public class ServicioMeteorologicoAccWea implements ServicioMeteorologico {
 
   public BigDecimal getHumedad(String ciudad) {
     return getEstadoClima(0, consultarApi(ciudad)).getHumedad();
+  }
+
+  public List<AlertaMeteorologica> getAlertasMeteorologicas(String ciudad) {
+    List<String> alerts = api.getAlerts(ciudad).get("CurrentAlerts");
+    List<AlertaMeteorologica> alertasMeteorologicas = new ArrayList<>();
+    if (alerts == null || alerts.isEmpty()) {
+      alertasMeteorologicas.add(AlertaMeteorologica.SIN_ALERTA);
+    } else {
+      for (String alert : alerts) {
+        alertasMeteorologicas.add(AlertaMeteorologica.fromString(alert));
+      }
+    }
+    return alertasMeteorologicas;
   }
 
 }

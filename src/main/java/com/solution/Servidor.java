@@ -1,5 +1,7 @@
 package com.solution;
 
+import com.solution.Clima.ServicioMeteorologico;
+import com.solution.Clima.ServicioMeteorologicoAccWea;
 import com.solution.atuendos.Uniforme;
 import com.solution.motorSugerencias.MotorSugerencias;
 import com.solution.motorSugerencias.MotorSugerenciasNormal;
@@ -54,8 +56,8 @@ public class Servidor {
     unUsuario.recibirAtuendo(uniformeSeleccionado);
   }
 
-  public static void nuevoUsuario(int edad) {
-    usuarios.add(new Usuario(edad, motor));
+  public static void nuevoUsuario(int edad, ServicioMeteorologico pronostico) {
+    usuarios.add(new Usuario(edad, motor, pronostico));
   }
 
 }

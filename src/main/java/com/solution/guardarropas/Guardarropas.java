@@ -9,11 +9,7 @@ public class Guardarropas {
   private List<Prenda> prendas;
   private List<PropuestaModificacion> sugerenciasPendientes;
   private List<PropuestaModificacion> sugerenciasAceptadas;
-  private Usuario owner;  //AL PEDO. Validacion se hace por fuera.
-
-  public Guardarropas(Usuario owner) {
-    this.owner = owner;
-  }
+  private String categoria;
 
   public void tieneSugerencia(PropuestaModificacion propuesta) {
     if (! sugerenciasPendientes.contains(propuesta)) {
@@ -44,6 +40,18 @@ public class Guardarropas {
     } else {
       throw new RuntimeException("La prenda no existía en el guardarropas.");
     }
+  }
+
+  public void setCategoria(String categoria) {
+    this.categoria = categoria;
+  }
+
+  public String getCategoria() {
+    return categoria;
+  }
+
+  public void setPrendas(List<Prenda> prendas) {
+    this.prendas = prendas;
   }
 
   public List<Prenda> getPrendas() {

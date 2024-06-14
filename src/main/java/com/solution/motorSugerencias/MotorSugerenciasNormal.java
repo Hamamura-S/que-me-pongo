@@ -10,3 +10,8 @@ public class MotorSugerenciasNormal extends MotorSugerencias {
     return super.generarSugerencias(guardarropas, edad);
   }
 }
+
+
+
+
+
