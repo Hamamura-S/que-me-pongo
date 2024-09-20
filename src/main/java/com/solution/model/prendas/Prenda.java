@@ -1,5 +1,6 @@
 package com.solution.model.prendas;
 
+import com.solution.DTO.PrendaDTO;
 import com.solution.model.enums.Categoria;
 import com.solution.model.enums.Material;
 import com.solution.model.enums.Trama;
@@ -9,6 +10,7 @@ import com.solution.model.enums.Trama;
  */
 public class Prenda {
 
+  protected Long id;
   protected TipoPrenda tipo;
   protected Material material;
   protected Color colorPrimario;
@@ -28,6 +30,10 @@ public class Prenda {
   }
 
   //GETTERS
+
+  public Long getId() {
+    return id;
+  }
 
   public String getNombre() {
     return tipo.nombre;
@@ -63,6 +69,19 @@ public class Prenda {
 
   public int getTemperaturaLimite() {
     return temperaturaLimite;
+  }
+
+  public PrendaDTO toDTO() {
+    PrendaDTO prendaDTO = new PrendaDTO();
+    prendaDTO.setId(id);
+    prendaDTO.setTipoPrendaId(tipo.id);
+    prendaDTO.setMaterial(material);
+    prendaDTO.setColorPrimario(colorPrimario);
+    prendaDTO.setColorSecundario(colorSecundario);
+    prendaDTO.setTrama(trama);
+    prendaDTO.setFormalidad(formalidad);
+    prendaDTO.setTemperaturaLimite(temperaturaLimite);
+    return prendaDTO;
   }
 
 }

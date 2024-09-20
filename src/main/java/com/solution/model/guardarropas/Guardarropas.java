@@ -1,11 +1,13 @@
 package com.solution.model.guardarropas;
 
 import com.solution.model.prendas.Prenda;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Guardarropas {
 
-  private List<Prenda> prendas;
+  private Long id;
+  private List<Prenda> prendas = new ArrayList<>();
   private List<PropuestaModificacion> sugerenciasPendientes;
   private List<PropuestaModificacion> sugerenciasAceptadas;
   private String categoria;
@@ -57,12 +59,20 @@ public class Guardarropas {
     return prendas;
   }
 
+  public Prenda getPrenda(Long idPrenda) {
+    return prendas.stream().filter(prenda -> prenda.getId().equals(idPrenda)).findFirst().orElse(null);
+  }
+
   public List<PropuestaModificacion> getSugerenciasPendientes() {
     return sugerenciasPendientes;
   }
 
   public List<PropuestaModificacion> getSugerenciasAceptadas() {
     return sugerenciasAceptadas;
+  }
+
+  public Long getId() {
+    return id;
   }
 
 }

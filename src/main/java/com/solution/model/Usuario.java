@@ -127,6 +127,13 @@ public class Usuario {
     return prendas;
   }
 
+  public Guardarropas getGuardarropas(Long guardarropasId) {
+    return listaGuardarropas.stream()
+        .filter(guardarropas -> guardarropas.getId().equals(guardarropasId))
+        .findFirst()
+        .orElse(new Guardarropas());
+  }
+
   public String getLocacion() {
     return locacion;
   }

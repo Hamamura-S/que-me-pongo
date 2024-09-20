@@ -25,6 +25,24 @@ public class Repository<T, ID> {
     em.close();
   }
 
+  public void actualizar(T entity) {
+    EntityManager em = emProvider.getEntityManager();
+    try {
+      em.getTransaction().begin();
+      em.merge(entity);
+      em.getTransaction().commit();
+    } catch (Exception e) {
+      if (em.getTransaction().isActive()) {
+        em.getTransaction().rollback();
+      }
+      e.printStackTrace();
+    } finally {
+      em.close();
+    }
+
+    em.close();
+  }
+
   /**
    * Actualiza una entidad detached en la base de datos.
    */

@@ -19,6 +19,19 @@ public class PrendaController {
     tipoPrendaRepository = new TipoPrendaRepository(entityManagerProvider);
   }
 
+  // POST : /prendas
+  /*
+  * body: {
+  *   "id": 1,
+  *   "tipoPrenda": 5,
+  *   "material": "algodon",
+  *   "colorPrimario": "rojo",
+  *   "trama": "lisa",
+  *   "colorSecundario": "verde",
+  *   "formalidad": 1,
+  *   "temperaturaLimite": 20
+  * */
+  // RETURNS: 200 OK or 400 BAD REQUEST
   public void agregarPrenda(PrendaDTO prendaData) throws IllegalArgumentException {
     Long tipoPrendaId = prendaData.getId();
     TipoPrenda tipoPrenda = tipoPrendaRepository.buscarPorId(tipoPrendaId);
